@@ -9,11 +9,18 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class BookingService {
+    private final BigDecimal premiumRoomMinimumPrice;
 
-    public HotelRoomsNightOccupancy bookRooms(HotelFreeRooms freeRooms, List<PotentialGuest> potentialGuests) {
+    public BookingService(BigDecimal premiumRoomMinimumPrice) {
+        this.premiumRoomMinimumPrice = premiumRoomMinimumPrice;
+    }
+
+    public HotelRoomsNightOccupancy bookRooms(HotelFreeRooms freeRooms, List<PotentialGuest> potentialGuestsList) {
+        PotentialGuests potentialGuests = new PotentialGuests(potentialGuestsList, this.premiumRoomMinimumPrice);
         return new HotelRoomsNightOccupancy(
-                new RoomNightOccupancy(1, BigDecimal.ONE),
+                potentialGuests.bookEconomyRooms(freeRooms.economy()),
                 new RoomNightOccupancy(1, BigDecimal.ONE)
         );
     }
+
 }

@@ -4,5 +4,6 @@ import com.github.marcindabrowski.example.roomsbooking.domain.service.BookingSer
 import spock.lang.Specification
 
 abstract class BaseRoomsBookingApplicationSpec extends Specification{
-    BookingService bookingService = new BookingService()
+    BigDecimal premiumRoomMinimumPrice = 100
+    BookingService bookingService = new BookingService(premiumRoomMinimumPrice)
 }
