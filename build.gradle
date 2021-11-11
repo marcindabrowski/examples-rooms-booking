@@ -1,0 +1,59 @@
+buildscript {
+    ext.spock_version = '2.0-groovy-3.0'
+}
+
+plugins {
+    id 'codenarc'
+    id 'com.adarshr.test-logger' version '3.1.0'
+    id 'groovy'
+    id 'java'
+    id 'net.ltgt.errorprone' version '2.0.2'
+    id 'org.springframework.boot' version '2.5.6'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group = 'com.github.marcindabrowski.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    errorprone 'com.google.errorprone:error_prone_core:2.9.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation group: 'org.spockframework', name: 'spock-core', version: spock_version
+    testImplementation group: 'org.spockframework', name: 'spock-spring', version: spock_version
+}
+
+tasks.withType(Test).configureEach { testTask ->
+    testTask.configure {
+        useJUnitPlatform()
+        afterSuite { desc, result ->
+            if (!desc.parent) {
+                if (result.testCount == 0) {
+                    throw new IllegalStateException('No tests were found. Failing the build')
+                }
+            }
+        }
+    }
+}
+
+
+codenarc {
+    toolVersion = '2.2.0'
+    reportFormat = 'console'
+    configFile = rootProject.file('CodenarcRuleSet.groovy')
+}
