@@ -36,7 +36,7 @@ repositories {
 }
 
 dependencies {
-    errorprone 'com.google.errorprone:error_prone_core:2.9.0'
+    errorprone 'com.google.errorprone:error_prone_core:2.10.0'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
