@@ -1,0 +1,171 @@
+### Test Case 1
+POST {{rooms-booking-address}}/book-rooms
+Content-Type: application/json
+
+{
+  "freeRooms": {
+    "economy": 3,
+    "premium": 3
+  },
+  "potentialGuests": [23, 45, 155, 374, 22, 99.99, 100, 101, 115, 209]
+}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Response content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("Number of booked economy rooms is 3", function() {
+        var body = response.body;
+        client.assert(body.economy.bookedRooms === 3, "Expected that 3 economy rooms was booked but received '" + body.economy.bookedRooms + "'");
+    });
+
+    client.test("Amount of booked economy rooms is 167.99", function() {
+        var body = response.body;
+        client.assert(body.economy.bookingAmount === 167.99, "Expected that amount for booked economy rooms is 167.99 but received '" + body.economy.bookingAmount + "'");
+    });
+
+    client.test("Number of booked premium rooms is 3", function() {
+        var body = response.body;
+        client.assert(body.premium.bookedRooms === 3, "Expected that 3 premium rooms was booked but received '" + body.premium.bookedRooms + "'");
+    });
+
+    client.test("Amount of booked premium rooms is 738", function() {
+        var body = response.body;
+        client.assert(body.premium.bookingAmount === 738, "Expected that amount for booked premium rooms is 738 but received '" + body.premium.bookingAmount + "'");
+    });
+%}
+
+### Test Case 2
+POST {{rooms-booking-address}}/book-rooms
+Content-Type: application/json
+
+{
+  "freeRooms": {
+    "economy": 5,
+    "premium": 7
+  },
+  "potentialGuests": [23, 45, 155, 374, 22, 99.99, 100, 101, 115, 209]
+}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Response content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("Number of booked economy rooms is 4", function() {
+        var body = response.body;
+        client.assert(body.economy.bookedRooms === 4, "Expected that 4 economy rooms was booked but received '" + body.economy.bookedRooms + "'");
+    });
+
+    client.test("Amount of booked economy rooms is 189.99", function() {
+        var body = response.body;
+        client.assert(body.economy.bookingAmount === 189.99, "Expected that amount for booked economy rooms is 189.99 but received '" + body.economy.bookingAmount + "'");
+    });
+
+    client.test("Number of booked premium rooms is 6", function() {
+        var body = response.body;
+        client.assert(body.premium.bookedRooms === 6, "Expected that 6 premium rooms was booked but received '" + body.premium.bookedRooms + "'");
+    });
+
+    client.test("Amount of booked premium rooms is 1054", function() {
+        var body = response.body;
+        client.assert(body.premium.bookingAmount === 1054, "Expected that amount for booked premium rooms is 1054 but received '" + body.premium.bookingAmount + "'");
+    });
+%}
+
+### Test Case 3
+POST {{rooms-booking-address}}/book-rooms
+Content-Type: application/json
+
+{
+  "freeRooms": {
+    "economy": 7,
+    "premium": 2
+  },
+  "potentialGuests": [23, 45, 155, 374, 22, 99.99, 100, 101, 115, 209]
+}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Response content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("Number of booked economy rooms is 4", function() {
+        var body = response.body;
+        client.assert(body.economy.bookedRooms === 4, "Expected that 4 economy rooms was booked but received '" + body.economy.bookedRooms + "'");
+    });
+
+    client.test("Amount of booked economy rooms is 189.99", function() {
+        var body = response.body;
+        client.assert(body.economy.bookingAmount === 189.99, "Expected that amount for booked economy rooms is 189.99 but received '" + body.economy.bookingAmount + "'");
+    });
+
+    client.test("Number of booked premium rooms is 2", function() {
+        var body = response.body;
+        client.assert(body.premium.bookedRooms === 2, "Expected that 2 premium rooms was booked but received '" + body.premium.bookedRooms + "'");
+    });
+
+    client.test("Amount of booked premium rooms is 583", function() {
+        var body = response.body;
+        client.assert(body.premium.bookingAmount === 583, "Expected that amount for booked premium rooms is 583 but received '" + body.premium.bookingAmount + "'");
+    });
+%}
+
+### Test Case 4
+POST {{rooms-booking-address}}/book-rooms
+Content-Type: application/json
+
+{
+  "freeRooms": {
+    "economy": 1,
+    "premium": 7
+  },
+  "potentialGuests": [23, 45, 155, 374, 22, 99.99, 100, 101, 115, 209]
+}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+
+    client.test("Response content-type is json", function() {
+        var type = response.contentType.mimeType;
+        client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+    });
+
+    client.test("Number of booked economy rooms is 1", function() {
+        var body = response.body;
+        client.assert(body.economy.bookedRooms === 1, "Expected that 1 economy rooms was booked but received '" + body.economy.bookedRooms + "'");
+    });
+
+    client.test("Amount of booked economy rooms is 45", function() {
+        var body = response.body;
+        client.assert(body.economy.bookingAmount === 45, "Expected that amount for booked economy rooms is 45 but received '" + body.economy.bookingAmount + "'");
+    });
+
+    client.test("Number of booked premium rooms is 7", function() {
+        var body = response.body;
+        client.assert(body.premium.bookedRooms === 7, "Expected that 7 premium rooms was booked but received '" + body.premium.bookedRooms + "'");
+    });
+
+    client.test("Amount of booked premium rooms is 1153.99", function() {
+        var body = response.body;
+        client.assert(body.premium.bookingAmount === 1153.99, "Expected that amount for booked premium rooms is 1153.99 but received '" + body.premium.bookingAmount + "'");
+    });
+%}
