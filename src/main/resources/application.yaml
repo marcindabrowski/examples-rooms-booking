@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: example-rooms-booking
+
+booking-service:
+  premium-room-minimum-price: 100

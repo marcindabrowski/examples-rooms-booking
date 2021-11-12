@@ -16,10 +16,19 @@ group = 'com.github.marcindabrowski.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
+sourceSets {
+    integration {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    integrationImplementation.extendsFrom testImplementation
+    integrationRuntimeOnly.extendsFrom testRuntime
 }
 
 repositories {
@@ -36,6 +45,10 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation group: 'org.spockframework', name: 'spock-core', version: spock_version
     testImplementation group: 'org.spockframework', name: 'spock-spring', version: spock_version
+
+    integrationImplementation 'org.springframework.boot:spring-boot-starter-test'
+    integrationImplementation group: 'org.spockframework', name: 'spock-spring', version: spock_version
+    integrationImplementation 'org.springframework:spring-test'
 }
 
 tasks.withType(Test).configureEach { testTask ->
@@ -51,6 +64,13 @@ tasks.withType(Test).configureEach { testTask ->
     }
 }
 
+task integrationTest(type: Test) {
+    testClassesDirs = sourceSets.integration.output.classesDirs
+    classpath = sourceSets.integration.runtimeClasspath
+    dependsOn test
+}
+
+check.dependsOn integrationTest
 
 codenarc {
     toolVersion = '2.2.0'
