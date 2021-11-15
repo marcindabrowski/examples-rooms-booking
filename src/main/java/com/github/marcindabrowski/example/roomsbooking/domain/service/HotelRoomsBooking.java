@@ -47,21 +47,24 @@ final class HotelRoomsBooking {
     }
 
     private RoomNightOccupancy bookPremiumRoomsByPremiumGuests() {
-        return bookRooms(freeRooms.premium(), NOT_BOOKED_ROOMS, this.premiumPotentialGuests.iterator());
+        return bookRooms(freeRooms.premium(), NOT_BOOKED_ROOMS, this.premiumPotentialGuests.iterator(), freeRooms.premium());
     }
 
     private RoomNightOccupancy bookPremiumRoomsByEconomyGuests(RoomNightOccupancy bookedPremiumRooms) {
-        return bookRooms(freeRooms.premium(), bookedPremiumRooms, this.economyPotentialGuests.iterator());
+        return bookRooms(freeRooms.premium(), bookedPremiumRooms, this.economyPotentialGuests.iterator(),
+                economyPotentialGuests.size() - freeRooms.economy());
     }
 
     private RoomNightOccupancy bookEconomyRooms() {
-        return bookRooms(freeRooms.economy(), NOT_BOOKED_ROOMS, this.economyPotentialGuests.iterator());
+        return bookRooms(freeRooms.economy(), NOT_BOOKED_ROOMS, this.economyPotentialGuests.iterator(), freeRooms.economy());
     }
 
-    private RoomNightOccupancy bookRooms(int freeRooms, RoomNightOccupancy alreadyBookedRooms, Iterator<PotentialGuest> guestIterator) {
+    private RoomNightOccupancy bookRooms(int freeRooms, RoomNightOccupancy alreadyBookedRooms, Iterator<PotentialGuest> guestIterator,
+                                         int guestAllowedToBook) {
         int bookedRooms = alreadyBookedRooms.bookedRooms();
+        int maximumRoomsAvailableForBooking = Math.min(bookedRooms + guestAllowedToBook, freeRooms);
         BigDecimal bookingAmount = alreadyBookedRooms.bookingAmount();
-        while (bookedRooms < freeRooms && guestIterator.hasNext()) {
+        while (bookedRooms < maximumRoomsAvailableForBooking && guestIterator.hasNext()) {
             bookedRooms++;
             bookingAmount = bookingAmount.add(guestIterator.next().guestPayment());
             guestIterator.remove();

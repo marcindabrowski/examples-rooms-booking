@@ -35,4 +35,25 @@ class BookingServiceTest extends BaseRoomsBookingApplicationSpec {
             "Test Case 3"                 | 4                | 2                | [23, 45, 155, 374, 22, 99.99, 100, 101, 115, 209] | 4                  | 189.99             | 2                  | 583
             "Test Case 4"                 | 1                | 7                | [23, 45, 155, 374, 22, 99.99, 100, 101, 115, 209] | 1                  | 45                 | 7                  | 1153.99
     }
+
+    def "should book only one premium room by economy guest - #testCaseName"() {
+        given: "number of free rooms"
+            HotelFreeRooms freeRooms = new HotelFreeRooms(freeEconomyRooms, freePremiumRooms)
+
+        and: "list of potential guests"
+            List<PotentialGuest> potentialGuestsList = potentialGuestsPayments.collect { new PotentialGuest(BigDecimal.valueOf(it as Double)) }.toList()
+
+        when: "book rooms"
+            HotelRoomsNightOccupancy hotelRoomsNightOccupancy = bookingService.bookRooms(freeRooms, potentialGuestsList)
+
+        then: "the most effective bookings is used"
+            HotelRoomsNightOccupancyAssertion.assertThat(hotelRoomsNightOccupancy) {
+                hasBookedEconomyRooms(bookedRooms: economyRoomsBooked, bookingAmount: economyRoomsAmount)
+                hasBookedPremiumRooms(bookedRooms: premiumRoomsBooked, bookingAmount: premiumRoomsAmount)
+            }
+
+        where:
+            testCaseName  | freeEconomyRooms | freePremiumRooms | potentialGuestsPayments                 | economyRoomsBooked | economyRoomsAmount | premiumRoomsBooked | premiumRoomsAmount
+            "Test Case 5" | 3                | 7                | [23, 45, 22, 99.99, 100, 101, 115, 209] | 3                  | 90                 | 5                  | 624.99
+    }
 }
