@@ -5,6 +5,7 @@ import com.github.marcindabrowski.example.roomsbooking.domain.model.HotelRoomsNi
 import com.github.marcindabrowski.example.roomsbooking.domain.model.PotentialGuest;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.val;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -14,7 +15,7 @@ public class BookingService {
     private final BigDecimal premiumRoomMinimumPrice;
 
     public HotelRoomsNightOccupancy bookRooms(@NonNull HotelFreeRooms freeRooms, @NonNull List<PotentialGuest> potentialGuestsList) {
-        HotelRoomsBooking hotelRoomsBooking = new HotelRoomsBooking(this.premiumRoomMinimumPrice, freeRooms, potentialGuestsList);
+        val hotelRoomsBooking = new HotelRoomsBooking(this.premiumRoomMinimumPrice, freeRooms, potentialGuestsList);
         return hotelRoomsBooking.bookRooms();
     }
 }

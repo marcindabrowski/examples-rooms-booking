@@ -4,6 +4,7 @@ import com.github.marcindabrowski.example.roomsbooking.domain.model.HotelFreeRoo
 import com.github.marcindabrowski.example.roomsbooking.domain.model.HotelRoomsNightOccupancy;
 import com.github.marcindabrowski.example.roomsbooking.domain.model.PotentialGuest;
 import com.github.marcindabrowski.example.roomsbooking.domain.model.RoomNightOccupancy;
+import lombok.val;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
@@ -33,11 +34,11 @@ final class HotelRoomsBooking {
     }
 
     HotelRoomsNightOccupancy bookRooms() {
-        RoomNightOccupancy bookedPremiumRooms = bookPremiumRoomsByPremiumGuests();
+        var bookedPremiumRooms = bookPremiumRoomsByPremiumGuests();
         if (shouldEconomyGuestsBookPremiumRooms(bookedPremiumRooms)) {
             bookedPremiumRooms = bookPremiumRoomsByEconomyGuests(bookedPremiumRooms);
         }
-        RoomNightOccupancy bookedEconomyRooms = bookEconomyRooms();
+        val bookedEconomyRooms = bookEconomyRooms();
         return new HotelRoomsNightOccupancy(bookedEconomyRooms, bookedPremiumRooms);
     }
 
@@ -61,9 +62,9 @@ final class HotelRoomsBooking {
 
     private RoomNightOccupancy bookRooms(int freeRooms, RoomNightOccupancy alreadyBookedRooms, Iterator<PotentialGuest> guestIterator,
                                          int guestAllowedToBook) {
-        int bookedRooms = alreadyBookedRooms.bookedRooms();
-        int maximumRoomsAvailableForBooking = Math.min(bookedRooms + guestAllowedToBook, freeRooms);
-        BigDecimal bookingAmount = alreadyBookedRooms.bookingAmount();
+        var bookedRooms = alreadyBookedRooms.bookedRooms();
+        val maximumRoomsAvailableForBooking = Math.min(bookedRooms + guestAllowedToBook, freeRooms);
+        var bookingAmount = alreadyBookedRooms.bookingAmount();
         while (bookedRooms < maximumRoomsAvailableForBooking && guestIterator.hasNext()) {
             bookedRooms++;
             bookingAmount = bookingAmount.add(guestIterator.next().guestPayment());

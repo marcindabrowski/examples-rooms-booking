@@ -1,9 +1,9 @@
 package com.github.marcindabrowski.example.roomsbooking.application.rest;
 
-import com.github.marcindabrowski.example.roomsbooking.domain.model.HotelRoomsNightOccupancy;
 import com.github.marcindabrowski.example.roomsbooking.domain.model.PotentialGuest;
 import com.github.marcindabrowski.example.roomsbooking.domain.service.BookingService;
 import lombok.RequiredArgsConstructor;
+import lombok.val;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +20,7 @@ class BookingController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public BookRoomsResponse bookRooms(@RequestBody final BookRoomsRequest bookRoomsRequest) {
-        HotelRoomsNightOccupancy hotelRoomsNightOccupancy = bookingService.bookRooms(
+        val hotelRoomsNightOccupancy = bookingService.bookRooms(
                 bookRoomsRequest.freeRooms(),
                 bookRoomsRequest.potentialGuests().stream().map(this::potentialGuest).toList());
         return new BookRoomsResponse(hotelRoomsNightOccupancy.economy(), hotelRoomsNightOccupancy.premium());
