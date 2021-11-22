@@ -7,7 +7,7 @@ import groovy.transform.builder.SimpleStrategy
 class BookRoomsRequestBuilder {
     int freeEconomyRooms = 1
     int freePremiumRooms = 1
-    List<Double> potentialGuests = [23, 45, 155, 374, 22, 99.99, 100, 101, 115, 209]
+    List<BigDecimal> potentialGuests = [23, 45, 155, 374, 22, 99.99, 100, 101, 115, 209]
 
     static BookRoomsRequestBuilder aBookRoomsRequest() {
         return new BookRoomsRequestBuilder()

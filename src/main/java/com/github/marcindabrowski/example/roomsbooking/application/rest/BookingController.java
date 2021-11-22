@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.math.BigDecimal;
-
 @RestController
 @RequestMapping("/book-rooms")
 @RequiredArgsConstructor
@@ -22,11 +20,7 @@ class BookingController {
     public BookRoomsResponse bookRooms(@RequestBody final BookRoomsRequest bookRoomsRequest) {
         val hotelRoomsNightOccupancy = bookingService.bookRooms(
                 bookRoomsRequest.freeRooms(),
-                bookRoomsRequest.potentialGuests().stream().map(this::potentialGuest).toList());
+                bookRoomsRequest.potentialGuests().stream().map(PotentialGuest::new).toList());
         return new BookRoomsResponse(hotelRoomsNightOccupancy.economy(), hotelRoomsNightOccupancy.premium());
-    }
-
-    private PotentialGuest potentialGuest(double potentialGuestAmount) {
-        return new PotentialGuest(BigDecimal.valueOf(potentialGuestAmount));
     }
 }
