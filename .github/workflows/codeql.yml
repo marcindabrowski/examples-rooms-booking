@@ -8,19 +8,8 @@ on:
       - '.github/workflows/codeql.yml'
       - 'src/**'
 
-  pull_request:
-    types:
-      - opened
-      - edited
-      - synchronize
-      - reopened
-    paths:
-      - '.github/workflows/codeql.yml'
-      - 'src/**'
-
 jobs:
   code_ql_analysis:
-    if: github.event_name != 'pull_request'
     name: CodeQL Analysis
     runs-on: ubuntu-latest
     steps:
