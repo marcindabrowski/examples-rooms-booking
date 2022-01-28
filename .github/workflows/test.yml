@@ -13,24 +13,8 @@ on:
       - 'gradlew.bat'
       - 'settings.gradle'
 
-  pull_request:
-    types:
-      - opened
-      - edited
-      - synchronize
-      - reopened
-    paths:
-      - '.github/workflows/test.yml'
-      - '.gradle/**'
-      - 'src/**'
-      - 'build.gradle'
-      - 'gradlew'
-      - 'gradlew.bat'
-      - 'settings.gradle'
-
 jobs:
   test:
-    if: github.event_name != 'pull_request'
     name: Test
     runs-on: ubuntu-latest
     steps:

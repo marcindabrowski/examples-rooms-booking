@@ -13,24 +13,8 @@ on:
       - 'gradlew.bat'
       - 'settings.gradle'
 
-  pull_request:
-    types:
-      - opened
-      - edited
-      - synchronize
-      - reopened
-    paths:
-      - '.github/workflows/sonarqube.yml'
-      - '.gradle/**'
-      - 'src/**'
-      - 'build.gradle'
-      - 'gradlew'
-      - 'gradlew.bat'
-      - 'settings.gradle'
-
 jobs:
   sonar_cloud_scan:
-    if: github.event_name != 'pull_request'
     name: SonarCloud Scan
     runs-on: ubuntu-latest
     steps:
