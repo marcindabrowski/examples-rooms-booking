@@ -1,0 +1,65 @@
+name: Service Code Static Analysis by SonarCloud
+
+on:
+  workflow_dispatch:
+
+  push:
+    paths:
+      - '.github/workflows/sonarqube.yml'
+      - '.gradle/**'
+      - 'src/**'
+      - 'build.gradle'
+      - 'gradlew'
+      - 'gradlew.bat'
+      - 'settings.gradle'
+
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+    paths:
+      - '.github/workflows/sonarqube.yml'
+      - '.gradle/**'
+      - 'src/**'
+      - 'build.gradle'
+      - 'gradlew'
+      - 'gradlew.bat'
+      - 'settings.gradle'
+
+jobs:
+  sonar_cloud_scan:
+    if: github.event_name != 'pull_request'
+    name: SonarCloud Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: temurin
+          java-version: 17
+          check-latest: false
+          cache: gradle
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
+      - name: Build and run SonarCloud Scan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # https://docs.github.com/en/actions/security-guides/automatic-token-authentication
+        run: ./gradlew build sonarqube --info
