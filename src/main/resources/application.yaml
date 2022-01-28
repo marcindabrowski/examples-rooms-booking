@@ -1,6 +1,8 @@
 spring:
   application:
     name: example-rooms-booking
+  redis:
+    password: reviewdog2022
 
 booking-service:
   premium-room-minimum-price: 100
