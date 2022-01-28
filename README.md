@@ -20,3 +20,9 @@ Java 17
 * All tests (unit and integration)
 
 ```./gradlew test```
+
+## Running SonarCloud Scan
+
+* Run SonarCloud Scan
+
+```./gradlew sonarqube -Dsonar.login=yourAuthenticationToken --info```

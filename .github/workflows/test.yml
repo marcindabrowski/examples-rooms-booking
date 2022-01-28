@@ -1,12 +1,17 @@
-name: Service Code Static Analysis by CodeQL
+name: Service Test
 
 on:
   workflow_dispatch:
 
   push:
     paths:
-      - '.github/workflows/codeql.yml'
+      - '.github/workflows/test.yml'
+      - '.gradle/**'
       - 'src/**'
+      - 'build.gradle'
+      - 'gradlew'
+      - 'gradlew.bat'
+      - 'settings.gradle'
 
   pull_request:
     types:
@@ -15,13 +20,18 @@ on:
       - synchronize
       - reopened
     paths:
-      - '.github/workflows/codeql.yml'
+      - '.github/workflows/test.yml'
+      - '.gradle/**'
       - 'src/**'
+      - 'build.gradle'
+      - 'gradlew'
+      - 'gradlew.bat'
+      - 'settings.gradle'
 
 jobs:
-  code_ql_analysis:
+  test:
     if: github.event_name != 'pull_request'
-    name: CodeQL Analysis
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -29,6 +39,9 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
+
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
 
       - name: Set up JDK 17
         uses: actions/setup-java@v2
@@ -38,13 +51,5 @@ jobs:
           check-latest: true
           cache: gradle
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
-        with:
-          languages: java
-
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
+      - name: Test with Gradle
+        run: ./gradlew check --no-daemon

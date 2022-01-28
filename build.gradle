@@ -1,15 +1,16 @@
 buildscript {
-    ext.spock_version = '2.0-groovy-3.0'
+    ext.spock_version = "2.0-groovy-3.0"
 }
 
 plugins {
-    id 'codenarc'
-    id 'com.adarshr.test-logger' version '3.1.0'
-    id 'groovy'
-    id 'java'
-    id 'net.ltgt.errorprone' version '2.0.2'
-    id 'org.springframework.boot' version '2.6.3'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id "codenarc"
+    id "com.adarshr.test-logger" version "3.1.0"
+    id "groovy"
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+    id "java"
+    id "net.ltgt.errorprone" version "2.0.2"
+    id "org.sonarqube" version "3.3"
+    id "org.springframework.boot" version "2.6.3"
 }
 
 java {
@@ -18,8 +19,8 @@ java {
     }
 }
 
-group = 'com.github.marcindabrowski.example'
-version = '0.0.1-SNAPSHOT'
+group = "com.github.marcindabrowski.example"
+version = "0.0.1-SNAPSHOT"
 
 sourceSets {
     integration {
@@ -41,39 +42,39 @@ repositories {
 }
 
 dependencies {
-    errorprone 'com.google.errorprone:error_prone_core:2.11.0'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation group: 'org.spockframework', name: 'spock-core', version: spock_version
-    testImplementation group: 'org.spockframework', name: 'spock-spring', version: spock_version
+    errorprone "com.google.errorprone:error_prone_core:2.11.0"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    compileOnly "org.projectlombok:lombok"
+    developmentOnly "org.springframework.boot:spring-boot-devtools"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    annotationProcessor "org.projectlombok:lombok"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation group: "org.spockframework", name: "spock-core", version: spock_version
+    testImplementation group: "org.spockframework", name: "spock-spring", version: spock_version
 
-    integrationImplementation 'org.springframework.boot:spring-boot-starter-test'
-    integrationImplementation group: 'org.spockframework', name: 'spock-spring', version: spock_version
-    integrationImplementation 'org.springframework:spring-test'
+    integrationImplementation "org.springframework.boot:spring-boot-starter-test"
+    integrationImplementation group: "org.spockframework", name: "spock-spring", version: spock_version
+    integrationImplementation "org.springframework:spring-test"
 }
 
 task unitTest(type: Test) {
-    group = 'Verification'
-    description = 'Runs the unit tests.'
+    group = "Verification"
+    description = "Runs the unit tests."
     testClassesDirs = sourceSets.test.output.classesDirs
     classpath = sourceSets.test.runtimeClasspath
 }
 
 task integrationTest(type: Test) {
-    group = 'Verification'
-    description = 'Runs the integration tests.'
+    group = "Verification"
+    description = "Runs the integration tests."
     testClassesDirs = sourceSets.integration.output.classesDirs
     classpath = sourceSets.integration.runtimeClasspath
-    shouldRunAfter 'unitTest'
+    shouldRunAfter "unitTest"
 }
 
-tasks.named('test') {
-    it.group = 'Verification'
-    it.description = 'Runs the unit and the integration tests.'
+tasks.named("test") {
+    it.group = "Verification"
+    it.description = "Runs the unit and the integration tests."
 
     it.dependsOn unitTest, integrationTest
 
@@ -87,7 +88,7 @@ tasks.withType(Test).configureEach { testTask ->
         afterSuite { desc, result ->
             if (!desc.parent) {
                 if (result.testCount == 0) {
-                    throw new IllegalStateException('No tests were found. Failing the build')
+                    throw new IllegalStateException("No tests were found. Failing the build")
                 }
             }
         }
@@ -97,7 +98,15 @@ tasks.withType(Test).configureEach { testTask ->
 check.dependsOn unitTest, integrationTest
 
 codenarc {
-    toolVersion = '2.2.0'
-    reportFormat = 'console'
-    configFile = rootProject.file('CodenarcRuleSet.groovy')
+    toolVersion = "2.2.0"
+    reportFormat = "console"
+    configFile = rootProject.file("CodenarcRuleSet.groovy")
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "marcindabrowski_examples-rooms-booking"
+        property "sonar.organization", "marcindabrowski"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
 }

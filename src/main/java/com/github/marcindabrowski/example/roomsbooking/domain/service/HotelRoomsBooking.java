@@ -20,6 +20,7 @@ final class HotelRoomsBooking {
     private final List<PotentialGuest> economyPotentialGuests;
     private final List<PotentialGuest> premiumPotentialGuests;
 
+    @SuppressWarnings("java:S6204")
     HotelRoomsBooking(BigDecimal premiumRoomMinimumPrice, HotelFreeRooms freeRooms, List<PotentialGuest> potentialGuestsList) {
         this.premiumRoomMinimumPrice = premiumRoomMinimumPrice;
         this.freeRooms = freeRooms;
