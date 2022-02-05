@@ -9,6 +9,7 @@ plugins {
     id "io.spring.dependency-management" version "1.0.11.RELEASE"
     id "java"
     id "net.ltgt.errorprone" version "2.0.2"
+    id "pmd"
     id "org.sonarqube" version "3.3"
     id "org.springframework.boot" version "2.6.3"
 }
@@ -101,6 +102,16 @@ codenarc {
     toolVersion = "2.2.0"
     reportFormat = "console"
     configFile = rootProject.file("CodenarcRuleSet.groovy")
+}
+
+pmd {
+    toolVersion = "6.42.0"
+    consoleOutput = true
+    ignoreFailures = false
+    ruleSets = ["category/java/bestpractices.xml",
+                "category/java/errorprone.xml",
+                "category/java/performance.xml",
+                "category/java/security.xml"]
 }
 
 sonarqube {

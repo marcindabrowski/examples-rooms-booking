@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 final class HotelRoomsBooking {
     private static final RoomNightOccupancy NOT_BOOKED_ROOMS = new RoomNightOccupancy(0, BigDecimal.ZERO);
 
