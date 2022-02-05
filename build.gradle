@@ -3,15 +3,17 @@ buildscript {
 }
 
 plugins {
+    id "checkstyle"
     id "codenarc"
     id "com.adarshr.test-logger" version "3.1.0"
+    id "com.diffplug.spotless" version "6.2.1"
     id "groovy"
     id "io.spring.dependency-management" version "1.0.11.RELEASE"
     id "java"
     id "net.ltgt.errorprone" version "2.0.2"
-    id "pmd"
     id "org.sonarqube" version "3.3"
     id "org.springframework.boot" version "2.6.3"
+    id "pmd"
 }
 
 java {
@@ -98,6 +100,11 @@ tasks.withType(Test).configureEach { testTask ->
 
 check.dependsOn unitTest, integrationTest
 
+checkstyle {
+    toolVersion "9.3"
+    configFile file("config/checkstyle/google_aop_checks.xml")
+}
+
 codenarc {
     toolVersion = "2.2.0"
     reportFormat = "console"
@@ -119,5 +126,14 @@ sonarqube {
         property "sonar.projectKey", "marcindabrowski_examples-rooms-booking"
         property "sonar.organization", "marcindabrowski"
         property "sonar.host.url", "https://sonarcloud.io"
+    }
+}
+
+spotless {
+    java {
+        googleJavaFormat("1.13.0").aosp().reflowLongStrings()
+    }
+    freshmark {
+        target "*.md"
     }
 }

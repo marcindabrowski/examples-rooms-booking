@@ -16,11 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 class BookingController {
     private final BookingService bookingService;
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public BookRoomsResponse bookRooms(@RequestBody final BookRoomsRequest bookRoomsRequest) {
-        val hotelRoomsNightOccupancy = bookingService.bookRooms(
-                bookRoomsRequest.freeRooms(),
-                bookRoomsRequest.potentialGuests().stream().map(PotentialGuest::new).toList());
-        return new BookRoomsResponse(hotelRoomsNightOccupancy.economy(), hotelRoomsNightOccupancy.premium());
+        val hotelRoomsNightOccupancy =
+                bookingService.bookRooms(
+                        bookRoomsRequest.freeRooms(),
+                        bookRoomsRequest.potentialGuests().stream()
+                                .map(PotentialGuest::new)
+                                .toList());
+        return new BookRoomsResponse(
+                hotelRoomsNightOccupancy.economy(), hotelRoomsNightOccupancy.premium());
     }
 }
