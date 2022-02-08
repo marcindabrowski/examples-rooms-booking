@@ -34,7 +34,6 @@ jobs:
           distribution: temurin
           java-version: 17
           check-latest: false
-          cache: gradle
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v2
@@ -44,7 +43,9 @@ jobs:
           restore-keys: ${{ runner.os }}-sonar
 
       - name: Build and run SonarCloud Scan
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build sonarqube --info
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # https://docs.github.com/en/actions/security-guides/automatic-token-authentication
-        run: ./gradlew build sonarqube --info
