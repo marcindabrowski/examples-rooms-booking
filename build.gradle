@@ -7,7 +7,7 @@ plugins {
     id "checkstyle"
     id "codenarc"
     id "com.adarshr.test-logger" version "3.1.0"
-    id "com.diffplug.spotless" version "6.2.1"
+    id "com.diffplug.spotless" version "6.2.2"
     id "groovy"
     id "io.spring.dependency-management" version "1.0.11.RELEASE"
     id "it.nicolasfarabegoli.conventional-commits" version "1.0.1"
