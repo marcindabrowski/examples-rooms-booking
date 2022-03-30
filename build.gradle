@@ -57,7 +57,7 @@ dependencyManagement {
 ext {
     checkstyleToolVersion = "10.1"
     codenarcToolVersion = "3.0.0"
-    googleJavaFormatVersion = "1.13.0"
+    googleJavaFormatVersion = "1.15.0"
     pmdToolVersion = "6.44.0"
     spockVersion = "2.1-groovy-3.0"
 }
