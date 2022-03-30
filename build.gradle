@@ -55,7 +55,7 @@ dependencyManagement {
 }
 
 ext {
-    checkstyleVersion = "9.3"
+    checkstyleToolVersion = "10.1"
     codenarcVersion = "2.2.0"
     googleJavaFormatVersion = "1.13.0"
     pmdVersion = "6.42.0"
@@ -80,19 +80,9 @@ dependencies {
     integrationImplementation "org.springframework:spring-test"
 }
 
-pluginManager.withPlugin("pmd") {
-    dependencies {
-        constraints {
-            implementation("commons-io:commons-io:2.11.0") {
-                because "Versions 2.2 used by pmd plugin have known vulnerability CVE-2021-29425"
-            }
-        }
-    }
-}
-
 configurations.all {
     resolutionStrategy {
-        force "commons-io:commons-io:2.11.0"
+        force "commons-io:commons-io:2.11.0" // because "Versions 2.2 used by pmd plugin have known vulnerability CVE-2021-29425"
     }
 }
 
@@ -141,7 +131,7 @@ application {
 }
 
 checkstyle {
-    toolVersion = checkstyleVersion
+    toolVersion = checkstyleToolVersion
     configFile = file("config/checkstyle/google_aop_checks.xml")
 }
 
