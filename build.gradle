@@ -154,6 +154,24 @@ dependencyCheck {
     }
 }
 
+jar {
+    manifest {
+        attributes(
+                "Build-Jdk"              : "${System.properties["java.version"]} (${System.properties["java.vendor"]} ${System.properties["java.vm.version"]})",
+                "Build-Jdk-Spec"         : System.properties["java.specification.version"],
+                "Build-OS"               : "${System.properties["os.name"]} ${System.properties["os.arch"]} ${System.properties["os.version"]}",
+                "Build-Timestamp"        : java.time.Instant.now().toString(),
+                "Created-By"             : "Gradle ${gradle.gradleVersion}",
+                "Implementation-Title"   : project.name,
+                "Implementation-URL"     : "https://github.com/marcindabrowski/examples-rooms-booking",
+                "Implementation-Vendor"  : "Marcin Dąbrowski",
+                "Implementation-Version" : scmVersion.version,
+                "X-Compile-Source-JDK"   : tasks.compileJava.sourceCompatibility,
+                "X-Compile-Target-JDK"   : tasks.compileJava.targetCompatibility,
+        )
+    }
+}
+
 lombok {
     version = lombokVersion
 }
