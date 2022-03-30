@@ -5,6 +5,7 @@ plugins {
     id "com.adarshr.test-logger" version "3.2.0"
     id "com.diffplug.spotless" version "6.4.1"
     id "groovy"
+    id "io.freefair.lombok" version "6.4.1"
     id "io.spring.dependency-management" version "1.0.11.RELEASE"
     id "it.nicolasfarabegoli.conventional-commits" version "1.0.3"
     id "java"
@@ -58,6 +59,7 @@ ext {
     checkstyleToolVersion = "10.1"
     codenarcToolVersion = "3.0.0"
     googleJavaFormatVersion = "1.15.0"
+    lombokVersion = "1.18.22"
     pmdToolVersion = "6.44.0"
     spockVersion = "2.1-groovy-3.0"
 }
@@ -66,11 +68,13 @@ ext["jackson-bom.version"] = "2.13.2.20220328" // because "Version 2.13.2 used b
 
 dependencies {
     errorprone "com.google.errorprone:error_prone_core:2.11.0"
+
     implementation "org.springframework.boot:spring-boot-starter-web"
-    compileOnly "org.projectlombok:lombok"
-    developmentOnly "org.springframework.boot:spring-boot-devtools"
+
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
-    annotationProcessor "org.projectlombok:lombok"
+
+    developmentOnly "org.springframework.boot:spring-boot-devtools"
+
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     testImplementation group: "org.spockframework", name: "spock-core", version: spockVersion
     testImplementation group: "org.spockframework", name: "spock-spring", version: spockVersion
@@ -148,6 +152,10 @@ dependencyCheck {
         nuspecEnabled = false
         msbuildEnabled = false
     }
+}
+
+lombok {
+    version = lombokVersion
 }
 
 pmd {
