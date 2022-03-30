@@ -142,7 +142,7 @@ checkstyle {
 codenarc {
     toolVersion = codenarcToolVersion
     reportFormat = "console"
-    configFile = rootProject.file("CodenarcRuleSet.groovy")
+    configFile = rootProject.file("config/codenarc/CodenarcRuleSet.groovy")
 }
 
 dependencyCheck {
