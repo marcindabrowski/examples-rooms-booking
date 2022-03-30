@@ -59,7 +59,7 @@ ext {
     codenarcVersion = "2.2.0"
     googleJavaFormatVersion = "1.13.0"
     pmdVersion = "6.42.0"
-    spockVersion = "2.0-groovy-3.0"
+    spockVersion = "2.1-groovy-3.0"
 }
 
 ext["jackson-bom.version"] = "2.13.2.20220328" // because "Version 2.13.2 used by org.springframework.boot:spring-boot-starter-json have known vulnerability CVE-2020-36518"
