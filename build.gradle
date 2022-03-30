@@ -63,7 +63,6 @@ ext {
 }
 
 ext["jackson-bom.version"] = "2.13.2.20220328" // because "Version 2.13.2 used by org.springframework.boot:spring-boot-starter-json have known vulnerability CVE-2020-36518"
-ext["tomcat.version"] = "9.0.58" // because "Version 9.0.56 used by org.springframework.boot:spring-boot-starter-web have known vulnerability CVE-2021-29425"
 
 dependencies {
     errorprone "com.google.errorprone:error_prone_core:2.11.0"
