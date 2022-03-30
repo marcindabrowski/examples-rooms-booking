@@ -56,7 +56,7 @@ dependencyManagement {
 
 ext {
     checkstyleToolVersion = "10.1"
-    codenarcVersion = "2.2.0"
+    codenarcToolVersion = "3.0.0"
     googleJavaFormatVersion = "1.13.0"
     pmdVersion = "6.42.0"
     spockVersion = "2.1-groovy-3.0"
@@ -136,7 +136,7 @@ checkstyle {
 }
 
 codenarc {
-    toolVersion = codenarcVersion
+    toolVersion = codenarcToolVersion
     reportFormat = "console"
     configFile = rootProject.file("CodenarcRuleSet.groovy")
 }
