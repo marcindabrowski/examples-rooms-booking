@@ -5,7 +5,7 @@ plugins {
     id "com.adarshr.test-logger" version "3.2.0"
     id "com.diffplug.spotless" version "6.4.2"
     id "groovy"
-    id "io.freefair.lombok" version "6.4.2"
+    id "io.freefair.lombok" version "6.4.3"
     id "io.spring.dependency-management" version "1.0.11.RELEASE"
     id "it.nicolasfarabegoli.conventional-commits" version "1.0.3"
     id "java"
@@ -59,7 +59,6 @@ ext {
     checkstyleToolVersion = "10.1"
     codenarcToolVersion = "3.0.0"
     googleJavaFormatVersion = "1.15.0"
-    lombokVersion = "1.18.22"
     pmdToolVersion = "6.44.0"
     spockVersion = "2.1-groovy-3.0"
 }
@@ -168,10 +167,6 @@ jar {
                 "X-Compile-Target-JDK"   : tasks.compileJava.targetCompatibility,
         )
     }
-}
-
-lombok {
-    version = lombokVersion
 }
 
 pmd {
