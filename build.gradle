@@ -64,7 +64,7 @@ ext {
 }
 
 dependencies {
-    errorprone "com.google.errorprone:error_prone_core:2.13.1"
+    errorprone "com.google.errorprone:error_prone_core:2.14.0"
 
     implementation "org.springframework.boot:spring-boot-starter-web"
 
