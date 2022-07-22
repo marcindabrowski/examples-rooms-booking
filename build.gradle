@@ -5,7 +5,7 @@ plugins {
     id "com.adarshr.test-logger" version "3.2.0"
     id "com.diffplug.spotless" version "6.7.0"
     id "groovy"
-    id "io.freefair.lombok" version "6.4.3.1"
+    id "io.freefair.lombok" version "6.5.0.3"
     id "io.spring.dependency-management" version "1.0.12.RELEASE"
     id "it.nicolasfarabegoli.conventional-commits" version "2.0.0"
     id "java"
