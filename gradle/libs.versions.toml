@@ -1,0 +1,79 @@
+[versions]
+checkstyle = "10.8.0"
+codenarc = "3.2.0-groovy-4.0"
+google-java-format = "1.16.0"
+jacoco = "0.8.8"
+jackson = "2.14.2"
+junit = "5.9.2"
+pmd = "6.55.0"
+resilience4j = "2.0.2"
+slf4j = "1.7.36"
+snakeyaml = "1.33"
+spock = "2.3-groovy-4.0"
+spring-boot-platform = "2.7.9"
+
+[libraries]
+apache-commons-io = { module = "commons-io:commons-io", version = "2.11.0" }
+errorprone-core = { module = "com.google.errorprone:error_prone_core", version = "2.18.0" }
+groovy-platform = { module = "org.apache.groovy:groovy-bom", version = "4.0.9" }
+jackson-platform = { module = "com.fasterxml.jackson:jackson-bom", version.ref = "jackson" }
+javax-annotation-api = { module = "javax.annotation:javax.annotation-api", version = "1.3.2" }
+javax-inject-api = { module = "javax.inject:javax.inject", version = "1" }
+logging-slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+logging-slf4j-jul = { module = "org.slf4j:jul-to-slf4j", version.ref = "slf4j" }
+logging-slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
+resilience4j-retry = { module = "io.github.resilience4j:resilience4j-retry", version.ref = "resilience4j" }
+spring-boot-autoconfigure = { module = "org.springframework.boot:spring-boot-autoconfigure" }
+spring-boot-autoconfigureProcessor = { module = "org.springframework.boot:spring-boot-autoconfigure-processor" }
+spring-boot-configurationProcessor = { module = "org.springframework.boot:spring-boot-configuration-processor" }
+spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
+spring-boot-platform = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot-platform" }
+spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+spring-boot-starter-aop = { module = "org.springframework.boot:spring-boot-starter-aop" }
+spring-boot-starter-cache = { module = "org.springframework.boot:spring-boot-starter-cache" }
+spring-boot-starter-core = { module = "org.springframework.boot:spring-boot-starter" }
+spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
+spring-boot-starter-jdbc = { module = "org.springframework.boot:spring-boot-starter-jdbc" }
+spring-boot-starter-jetty = { module = "org.springframework.boot:spring-boot-starter-jetty" }
+spring-boot-starter-logging-logbook = { module = "org.zalando:logbook-spring-boot-starter" }
+spring-boot-starter-quartz = { module = "org.springframework.boot:spring-boot-starter-quartz" }
+spring-boot-starter-resilience4j = { module = "io.github.resilience4j:resilience4j-spring-boot2", version.ref = "resilience4j" }
+spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+spring-boot-starter-tomcat = { module = "org.springframework.boot:spring-boot-starter-tomcat" }
+spring-boot-starter-undertow = { module = "org.springframework.boot:spring-boot-starter-undertow" }
+spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+test-archunit = { module = "com.tngtech.archunit:archunit", version = "1.0.1" }
+test-junit-platform = { module = "org.junit:junit-bom", version.ref = "junit" }
+test-spock-core = { module = "org.spockframework:spock-core", version.ref = "spock" }
+test-spock-spring = { module = "org.spockframework:spock-spring", version.ref = "spock" }
+test-wiremock-jre8 = { module = "com.github.tomakehurst:wiremock-jre8", version = "2.35.0" }
+
+# dependecies managed by imported boms
+bomDependency-httpcomponents-httpclient = { module = "org.apache.httpcomponents:httpclient" }
+bomDependency-jackson-core-databind = { module = "com.fasterxml.jackson.core:jackson-databind" }
+bomDependency-jackson-datatype-jdk8 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jdk8" }
+bomDependency-jackson-datatype-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" }
+bomDependency-jackson-module-parameterNames = { module = "com.fasterxml.jackson.module:jackson-module-parameter-names" }
+bomDependency-logging-slf4j-api = { module = "org.slf4j:slf4j-api" }
+bomDependency-logging-slf4j-simple = { module = "org.slf4j:slf4j-simple" }
+bomDependency-spring-context-support = { module = "org.springframework:spring-context-support"}
+bomDependency-spring-core = { module = "org.springframework:spring-core" }
+bomDependency-spring-retry = { module = "org.springframework.retry:spring-retry" }
+bomDependency-spring-web = { module = "org.springframework:spring-web" }
+bomDependency-test-junit-api = { module = "org.junit.jupiter:junit-jupiter-api" }
+bomDependency-test-junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
+bomDependency-test-junit-params = { module = "org.junit.jupiter:junit-jupiter-params" }
+
+[plugins]
+conventionalCommits = { id = "it.nicolasfarabegoli.conventional-commits", version = "3.1.0" }
+dependencyCheck = { id = "org.owasp.dependencycheck", version = "8.1.2" }
+dependencyUpdates = { id = "com.github.ben-manes.versions", version = "0.46.0" }
+errorprone = { id = "net.ltgt.errorprone", version = "3.0.1" }
+gitProperties = { id = "com.gorylenko.gradle-git-properties", version = "2.4.1" }
+lombok = { id = "io.freefair.lombok", version = "6.6.3" }
+release = { id = "pl.allegro.tech.build.axion-release", version = "1.14.4" }
+sonarqube = { id = "org.sonarqube", version = "4.0.0.2929" }
+spotless = { id = "com.diffplug.spotless", version = "6.16.0" }
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot-platform" }
+spring-dependencyManagement = { id = "io.spring.dependency-management", version = "1.1.0" }
+testLogger = { id = "com.adarshr.test-logger", version = "3.2.0" }
