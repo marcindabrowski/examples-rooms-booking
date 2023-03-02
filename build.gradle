@@ -2,20 +2,22 @@ plugins {
     id "application"
     id "checkstyle"
     id "codenarc"
-    id "com.adarshr.test-logger" version "3.2.0"
-    id "com.diffplug.spotless" version "6.8.0"
     id "groovy"
-    id "io.freefair.lombok" version "6.5.0.3"
-    id "io.spring.dependency-management" version "1.0.12.RELEASE"
-    id "it.nicolasfarabegoli.conventional-commits" version "2.0.0"
+    id "jacoco"
     id "java"
     id "maven-publish"
-    id "net.ltgt.errorprone" version "2.0.2"
-    id "org.owasp.dependencycheck" version "7.1.0.1"
-    id "org.sonarqube" version "3.4.0.2513"
-    id "org.springframework.boot" version "2.7.2"
-    id "pl.allegro.tech.build.axion-release" version "1.13.14"
     id "pmd"
+
+    alias(libs.plugins.dependencyCheck)
+    alias(libs.plugins.dependencyUpdates)
+    alias(libs.plugins.errorprone)
+    alias(libs.plugins.lombok)
+    alias(libs.plugins.release)
+    alias(libs.plugins.sonarqube)
+    alias(libs.plugins.spotless)
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dependencyManagement)
+    alias(libs.plugins.testLogger)
 }
 
 java {
@@ -50,51 +52,49 @@ repositories {
 dependencyManagement {
     imports {
         // Complete list of spring-boot dependencies:
-        // https://github.com/spring-projects/spring-boot/blob/v2.6.7/spring-boot-project/spring-boot-dependencies/build.gradle
+        // https://github.com/spring-projects/spring-boot/blob/v2.7.9/spring-boot-project/spring-boot-dependencies/build.gradle
         mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
     }
 }
 
-ext {
-    checkstyleToolVersion = "10.1"
-    codenarcToolVersion = "3.0.0"
-    googleJavaFormatVersion = "1.15.0"
-    pmdToolVersion = "6.44.0"
-    spockVersion = "2.1-groovy-3.0"
-}
-
 dependencies {
-    errorprone "com.google.errorprone:error_prone_core:2.14.0"
+    errorprone libs.errorprone.core
 
-    implementation "org.springframework.boot:spring-boot-starter-web"
+    annotationProcessor libs.spring.boot.configurationProcessor
 
-    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    implementation(libs.spring.boot.starter.undertow) {
+        exclude group: "io.undertow", module: "undertow-websockets-jsr"
+        because "We are not using WebSockets"
+    }
+    implementation(libs.spring.boot.starter.web) {
+        exclude group: "org.springframework.boot", module: "spring-boot-starter-tomcat"
+        because "We are using Undertow"
+    }
 
-    developmentOnly "org.springframework.boot:spring-boot-devtools"
+    developmentOnly libs.spring.boot.devtools
 
-    testImplementation "org.springframework.boot:spring-boot-starter-test"
-    testImplementation group: "org.spockframework", name: "spock-core", version: spockVersion
-    testImplementation group: "org.spockframework", name: "spock-spring", version: spockVersion
+    testImplementation platform(libs.test.junit.platform)
+    testImplementation platform(libs.groovy.platform)
+    testImplementation libs.spring.boot.starter.test
+    testImplementation libs.test.spock.core
 
-    integrationImplementation "org.springframework.boot:spring-boot-starter-test"
-    integrationImplementation group: "org.spockframework", name: "spock-spring", version: spockVersion
-    integrationImplementation "org.springframework:spring-test"
+    integrationImplementation libs.test.spock.spring
 }
 
-configurations.all {
+configurations.configureEach {
     resolutionStrategy {
-        force "commons-io:commons-io:2.11.0" // because "Versions 2.2 used by pmd plugin have known vulnerability CVE-2021-29425"
+        force libs.apache.commons.io // because "Versions 2.2 used by pmd plugin have known vulnerability CVE-2021-29425"
     }
 }
 
-task unitTest(type: Test) {
+tasks.register("unitTest", Test) {
     group = "Verification"
     description = "Runs the unit tests."
     testClassesDirs = sourceSets.test.output.classesDirs
     classpath = sourceSets.test.runtimeClasspath
 }
 
-task integrationTest(type: Test) {
+tasks.register("integrationTest", Test) {
     group = "Verification"
     description = "Runs the integration tests."
     testClassesDirs = sourceSets.integration.output.classesDirs
@@ -132,17 +132,17 @@ application {
 }
 
 checkstyle {
-    toolVersion = checkstyleToolVersion
+    toolVersion = libs.versions.checkstyle.get()
     configFile = file("config/checkstyle/google_aop_checks.xml")
 }
 
 codenarc {
-    toolVersion = codenarcToolVersion
+    toolVersion = libs.versions.codenarc.get()
     reportFormat = "console"
     configFile = rootProject.file("config/codenarc/CodenarcRuleSet.groovy")
 }
 
-dependencyCheck {
+tasks.named("dependencyUpdates").configure {
     analyzers {
         assemblyEnabled = false
         nodeEnabled = false
@@ -169,8 +169,21 @@ jar {
     }
 }
 
+jacoco {
+    toolVersion = libs.versions.jacoco.get()
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        csv.required = false
+        html.required = false
+        xml.required = true
+    }
+}
+
 pmd {
-    toolVersion = pmdToolVersion
+    toolVersion = libs.versions.pmd.get()
     consoleOutput = true
     ignoreFailures = false
     ruleSets = ["category/java/bestpractices.xml",
@@ -233,7 +246,8 @@ sonarqube {
 
 spotless {
     java {
-        googleJavaFormat(googleJavaFormatVersion).aosp().reflowLongStrings()
+        googleJavaFormat(libs.versions.google.java.format.get()).aosp().reflowLongStrings()
+        targetExclude("build/generated/", "src/generated/")
     }
     freshmark {
         target "*.md"
