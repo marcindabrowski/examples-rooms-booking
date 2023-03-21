@@ -70,7 +70,7 @@ dependencyCheck = { id = "org.owasp.dependencycheck", version = "8.1.2" }
 dependencyUpdates = { id = "com.github.ben-manes.versions", version = "0.46.0" }
 errorprone = { id = "net.ltgt.errorprone", version = "3.0.1" }
 gitProperties = { id = "com.gorylenko.gradle-git-properties", version = "2.4.1" }
-lombok = { id = "io.freefair.lombok", version = "6.6.3" }
+lombok = { id = "io.freefair.lombok", version = "8.0.1" }
 release = { id = "pl.allegro.tech.build.axion-release", version = "1.14.4" }
 sonarqube = { id = "org.sonarqube", version = "4.0.0.2929" }
 spotless = { id = "com.diffplug.spotless", version = "6.16.0" }
