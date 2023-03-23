@@ -66,7 +66,7 @@ bomDependency-test-junit-params = { module = "org.junit.jupiter:junit-jupiter-pa
 
 [plugins]
 conventionalCommits = { id = "it.nicolasfarabegoli.conventional-commits", version = "3.1.0" }
-dependencyCheck = { id = "org.owasp.dependencycheck", version = "8.1.2" }
+dependencyCheck = { id = "org.owasp.dependencycheck", version = "8.2.1" }
 dependencyUpdates = { id = "com.github.ben-manes.versions", version = "0.46.0" }
 errorprone = { id = "net.ltgt.errorprone", version = "3.0.1" }
 gitProperties = { id = "com.gorylenko.gradle-git-properties", version = "2.4.1" }
