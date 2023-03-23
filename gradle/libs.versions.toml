@@ -10,7 +10,7 @@ resilience4j = "2.0.2"
 slf4j = "1.7.36"
 snakeyaml = "1.33"
 spock = "2.3-groovy-4.0"
-spring-boot-platform = "2.7.9"
+spring-boot-platform = "2.7.10"
 
 [libraries]
 apache-commons-io = { module = "commons-io:commons-io", version = "2.11.0" }
