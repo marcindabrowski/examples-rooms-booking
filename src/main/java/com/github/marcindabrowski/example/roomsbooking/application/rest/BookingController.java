@@ -2,8 +2,10 @@ package com.github.marcindabrowski.example.roomsbooking.application.rest;
 
 import com.github.marcindabrowski.example.roomsbooking.domain.model.PotentialGuest;
 import com.github.marcindabrowski.example.roomsbooking.domain.service.BookingService;
+
 import lombok.RequiredArgsConstructor;
 import lombok.val;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

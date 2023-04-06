@@ -1,6 +1,7 @@
 package com.github.marcindabrowski.example.roomsbooking.config;
 
 import com.github.marcindabrowski.example.roomsbooking.domain.service.BookingService;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
