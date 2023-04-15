@@ -8,9 +8,11 @@ plugins {
     id "maven-publish"
     id "pmd"
 
+    alias(libs.plugins.conventionalCommits)
     alias(libs.plugins.dependencyCheck)
     alias(libs.plugins.dependencyUpdates)
     alias(libs.plugins.errorprone)
+    alias(libs.plugins.gitProperties)
     alias(libs.plugins.lombok)
     alias(libs.plugins.release)
     alias(libs.plugins.sonarqube)
