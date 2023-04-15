@@ -1,18 +1,19 @@
 [versions]
 checkstyle = "10.9.3"
 codenarc = "3.2.0-groovy-4.0"
+groovy = "4.0.11"
 google-java-format = "1.16.0"
 jacoco = "0.8.8"
 junit = "5.9.2"
 pmd = "6.55.0"
 snakeyaml = "1.33"
-spock = "2.3-groovy-4.0"
-spring-boot-platform = "2.7.10"
+spock = "2.4-M1-groovy-4.0"
+spring-boot-platform = "3.0.5"
 
 [libraries]
 apache-commons-io = { module = "commons-io:commons-io", version = "2.11.0" }
 errorprone-core = { module = "com.google.errorprone:error_prone_core", version = "2.18.0" }
-groovy-platform = { module = "org.apache.groovy:groovy-bom", version = "4.0.11" }
+groovy-platform = { module = "org.apache.groovy:groovy-bom", version.ref = "groovy" }
 spring-boot-configurationProcessor = { module = "org.springframework.boot:spring-boot-configuration-processor" }
 spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
 spring-boot-platform = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot-platform" }

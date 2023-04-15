@@ -32,32 +32,41 @@ java {
 group = "com.github.marcindabrowski.example"
 version = scmVersion.version
 
-sourceSets {
-    integration {
-        compileClasspath += sourceSets.main.output
-        runtimeClasspath += sourceSets.main.output
-    }
-}
-
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    integration {
+        extendsFrom testRuntimeClasspath
+        description = "Dependencies for integration tests"
+        transitive = true
+        visible = true
+    }
+
     integrationImplementation.extendsFrom testImplementation
-    integrationRuntimeOnly.extendsFrom testRuntime
+    integrationRuntimeOnly.extendsFrom testRuntimeOnly
+}
+
+sourceSets {
+    integration {
+        compileClasspath += sourceSets.main.output + sourceSets.test.output
+        runtimeClasspath += sourceSets.main.output + sourceSets.test.output
+
+        groovy {
+            srcDir("src/integration/java")
+        }
+        resources {
+            srcDir("src/integration/resources")
+        }
+    }
 }
 
 repositories {
     mavenCentral()
 }
 
-dependencyManagement {
-    imports {
-        // Complete list of spring-boot dependencies:
-        // https://github.com/spring-projects/spring-boot/blob/v2.7.9/spring-boot-project/spring-boot-dependencies/build.gradle
-        mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
-    }
-}
+// overriding Spring managed version
+ext["groovy.version"] = libs.versions.groovy.get()
 
 dependencies {
     errorprone libs.errorprone.core

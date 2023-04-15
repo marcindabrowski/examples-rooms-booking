@@ -1,16 +1,14 @@
 package com.github.marcindabrowski.example.roomsbooking.application.rest
 
-import com.github.marcindabrowski.example.roomsbooking.BaseIntegrationTest
+import com.github.marcindabrowski.example.roomsbooking.BaseIntegrationSpec
 import com.github.marcindabrowski.example.roomsbooking.infrastructure.ability.RestApiAbility
 import org.springframework.http.ResponseEntity
-import spock.lang.Unroll
 
 import static com.github.marcindabrowski.example.roomsbooking.application.rest.BookRoomsRequestBuilder.aBookRoomsRequest
 import static org.springframework.http.HttpStatus.OK
 
-class BookingControllerSpec extends BaseIntegrationTest implements RestApiAbility {
+class BookingControllerSpec extends BaseIntegrationSpec implements RestApiAbility {
 
-    @Unroll
     def "test bookRooms REST API endpoint - #testCaseName"() {
         given: "booking rooms request"
             BookRoomsRequestBuilder request = aBookRoomsRequest()
