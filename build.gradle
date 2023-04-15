@@ -133,7 +133,7 @@ application {
 
 checkstyle {
     toolVersion = libs.versions.checkstyle.get()
-    configFile = file("config/checkstyle/google_aop_checks.xml")
+    configFile = file("config/checkstyle/google_checks.xml")
 }
 
 codenarc {
@@ -246,7 +246,7 @@ sonarqube {
 
 spotless {
     java {
-        googleJavaFormat(libs.versions.google.java.format.get()).aosp().reflowLongStrings()
+        googleJavaFormat(libs.versions.google.java.format.get()).reflowLongStrings()
         targetExclude("build/generated/", "src/generated/")
     }
     freshmark {
