@@ -6,4 +6,5 @@
 
 <suppressions>
   <suppress checks="MissingJavadoc*" files=".*"/>
+  <suppress checks="SummaryJavadoc" files=".*"/>
 </suppressions>
