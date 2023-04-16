@@ -3,4 +3,4 @@ spring:
     name: example-rooms-booking
 
 booking-service:
-  premium-room-minimum-price: 100
+  premium-room-minimum-price: "100"

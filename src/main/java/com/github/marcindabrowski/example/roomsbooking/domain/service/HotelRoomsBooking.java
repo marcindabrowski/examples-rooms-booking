@@ -1,10 +1,12 @@
 package com.github.marcindabrowski.example.roomsbooking.domain.service;
 
+import static com.github.marcindabrowski.example.roomsbooking.domain.model.Amount.ZERO;
+
+import com.github.marcindabrowski.example.roomsbooking.domain.model.Amount;
 import com.github.marcindabrowski.example.roomsbooking.domain.model.HotelFreeRooms;
 import com.github.marcindabrowski.example.roomsbooking.domain.model.HotelRoomsNightOccupancy;
 import com.github.marcindabrowski.example.roomsbooking.domain.model.PotentialGuest;
 import com.github.marcindabrowski.example.roomsbooking.domain.model.RoomNightOccupancy;
-import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
@@ -14,17 +16,16 @@ import lombok.val;
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 final class HotelRoomsBooking {
 
-  private static final RoomNightOccupancy NOT_BOOKED_ROOMS =
-      new RoomNightOccupancy(0, BigDecimal.ZERO);
+  private static final RoomNightOccupancy NOT_BOOKED_ROOMS = new RoomNightOccupancy(0, ZERO);
 
-  private final BigDecimal premiumRoomMinimumPrice;
+  private final Amount premiumRoomMinimumPrice;
   private final HotelFreeRooms freeRooms;
   private final List<PotentialGuest> economyPotentialGuests;
   private final List<PotentialGuest> premiumPotentialGuests;
 
   @SuppressWarnings("java:S6204")
   HotelRoomsBooking(
-      BigDecimal premiumRoomMinimumPrice,
+      Amount premiumRoomMinimumPrice,
       HotelFreeRooms freeRooms,
       List<PotentialGuest> potentialGuestsList) {
     this.premiumRoomMinimumPrice = premiumRoomMinimumPrice;

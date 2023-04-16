@@ -20,13 +20,13 @@ class BookRoomsResponseAssertion {
         @NamedVariant
         void hasBookedEconomyRooms(int bookedRooms, BigDecimal bookingAmount) {
             assert response.body.economy.bookedRooms == bookedRooms
-            assert response.body.economy.bookingAmount == bookingAmount
+            assert response.body.economy.bookingAmount.value == bookingAmount
         }
 
         @NamedVariant
         void hasBookedPremiumRooms(int bookedRooms, BigDecimal bookingAmount) {
             assert response.body.premium.bookedRooms == bookedRooms
-            assert response.body.premium.bookingAmount == bookingAmount
+            assert response.body.premium.bookingAmount.value == bookingAmount
         }
     }
 

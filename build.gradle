@@ -87,6 +87,7 @@ dependencies {
     testImplementation platform(libs.test.junit.platform)
     testImplementation platform(libs.groovy.platform)
     testImplementation libs.spring.boot.starter.test
+    testImplementation libs.test.equalsVerifier
     testImplementation libs.test.spock.core
 
     integrationImplementation libs.test.spock.spring

@@ -15,13 +15,13 @@ class HotelRoomsNightOccupancyAssertion {
         @NamedVariant
         void hasBookedEconomyRooms(int bookedRooms, BigDecimal bookingAmount) {
             assert hotelRoomsNightOccupancy.economy().bookedRooms() == bookedRooms
-            assert hotelRoomsNightOccupancy.economy().bookingAmount() == bookingAmount
+            assert hotelRoomsNightOccupancy.economy().bookingAmount().value() == bookingAmount
         }
 
         @NamedVariant
         void hasBookedPremiumRooms(int bookedRooms, BigDecimal bookingAmount) {
             assert hotelRoomsNightOccupancy.premium().bookedRooms() == bookedRooms
-            assert hotelRoomsNightOccupancy.premium().bookingAmount() == bookingAmount
+            assert hotelRoomsNightOccupancy.premium().bookingAmount().value() == bookingAmount
         }
     }
 

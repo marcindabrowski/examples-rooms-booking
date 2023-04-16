@@ -1,6 +1,7 @@
 package com.github.marcindabrowski.example.roomsbooking.domain.service
 
 import com.github.marcindabrowski.example.roomsbooking.BaseRoomsBookingApplicationSpec
+import com.github.marcindabrowski.example.roomsbooking.domain.model.Amount
 import com.github.marcindabrowski.example.roomsbooking.domain.model.HotelFreeRooms
 import com.github.marcindabrowski.example.roomsbooking.domain.model.HotelRoomsNightOccupancy
 import com.github.marcindabrowski.example.roomsbooking.domain.model.PotentialGuest
@@ -14,7 +15,7 @@ class BookingServiceTest extends BaseRoomsBookingApplicationSpec {
             HotelFreeRooms freeRooms = new HotelFreeRooms(freeEconomyRooms, freePremiumRooms)
 
         and: "list of potential guests"
-            List<PotentialGuest> potentialGuestsList = potentialGuestsPayments.collect { new PotentialGuest(BigDecimal.valueOf(it as Double)) }.toList()
+            List<PotentialGuest> potentialGuestsList = potentialGuestsPayments.collect { new PotentialGuest(Amount.of(BigDecimal.valueOf(it as Double))) }.toList()
 
         when: "book rooms"
             HotelRoomsNightOccupancy hotelRoomsNightOccupancy = bookingService.bookRooms(freeRooms, potentialGuestsList)
@@ -41,7 +42,7 @@ class BookingServiceTest extends BaseRoomsBookingApplicationSpec {
             HotelFreeRooms freeRooms = new HotelFreeRooms(freeEconomyRooms, freePremiumRooms)
 
         and: "list of potential guests"
-            List<PotentialGuest> potentialGuestsList = potentialGuestsPayments.collect { new PotentialGuest(BigDecimal.valueOf(it as Double)) }.toList()
+            List<PotentialGuest> potentialGuestsList = potentialGuestsPayments.collect { new PotentialGuest(Amount.of(BigDecimal.valueOf(it as Double))) }.toList()
 
         when: "book rooms"
             HotelRoomsNightOccupancy hotelRoomsNightOccupancy = bookingService.bookRooms(freeRooms, potentialGuestsList)
