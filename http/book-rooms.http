@@ -27,7 +27,7 @@ Content-Type: application/json
 
     client.test("Amount of booked economy rooms is 167.99", function() {
         var body = response.body;
-        client.assert(body.economy.bookingAmount === 167.99, "Expected that amount for booked economy rooms is 167.99 but received '" + body.economy.bookingAmount + "'");
+        client.assert(body.economy.bookingAmount === "167.99", "Expected that amount for booked economy rooms is 167.99 but received '" + body.economy.bookingAmount + "'");
     });
 
     client.test("Number of booked premium rooms is 3", function() {
@@ -37,7 +37,7 @@ Content-Type: application/json
 
     client.test("Amount of booked premium rooms is 738", function() {
         var body = response.body;
-        client.assert(body.premium.bookingAmount === 738, "Expected that amount for booked premium rooms is 738 but received '" + body.premium.bookingAmount + "'");
+        client.assert(body.premium.bookingAmount === "738", "Expected that amount for booked premium rooms is 738 but received '" + body.premium.bookingAmount + "'");
     });
 %}
 
@@ -70,7 +70,7 @@ Content-Type: application/json
 
     client.test("Amount of booked economy rooms is 189.99", function() {
         var body = response.body;
-        client.assert(body.economy.bookingAmount === 189.99, "Expected that amount for booked economy rooms is 189.99 but received '" + body.economy.bookingAmount + "'");
+        client.assert(body.economy.bookingAmount === "189.99", "Expected that amount for booked economy rooms is 189.99 but received '" + body.economy.bookingAmount + "'");
     });
 
     client.test("Number of booked premium rooms is 6", function() {
@@ -80,7 +80,7 @@ Content-Type: application/json
 
     client.test("Amount of booked premium rooms is 1054", function() {
         var body = response.body;
-        client.assert(body.premium.bookingAmount === 1054, "Expected that amount for booked premium rooms is 1054 but received '" + body.premium.bookingAmount + "'");
+        client.assert(body.premium.bookingAmount === "1054", "Expected that amount for booked premium rooms is 1054 but received '" + body.premium.bookingAmount + "'");
     });
 %}
 
@@ -113,7 +113,7 @@ Content-Type: application/json
 
     client.test("Amount of booked economy rooms is 189.99", function() {
         var body = response.body;
-        client.assert(body.economy.bookingAmount === 189.99, "Expected that amount for booked economy rooms is 189.99 but received '" + body.economy.bookingAmount + "'");
+        client.assert(body.economy.bookingAmount === "189.99", "Expected that amount for booked economy rooms is 189.99 but received '" + body.economy.bookingAmount + "'");
     });
 
     client.test("Number of booked premium rooms is 2", function() {
@@ -123,7 +123,7 @@ Content-Type: application/json
 
     client.test("Amount of booked premium rooms is 583", function() {
         var body = response.body;
-        client.assert(body.premium.bookingAmount === 583, "Expected that amount for booked premium rooms is 583 but received '" + body.premium.bookingAmount + "'");
+        client.assert(body.premium.bookingAmount === "583", "Expected that amount for booked premium rooms is 583 but received '" + body.premium.bookingAmount + "'");
     });
 %}
 
@@ -156,7 +156,7 @@ Content-Type: application/json
 
     client.test("Amount of booked economy rooms is 45", function() {
         var body = response.body;
-        client.assert(body.economy.bookingAmount === 45, "Expected that amount for booked economy rooms is 45 but received '" + body.economy.bookingAmount + "'");
+        client.assert(body.economy.bookingAmount === "45", "Expected that amount for booked economy rooms is 45 but received '" + body.economy.bookingAmount + "'");
     });
 
     client.test("Number of booked premium rooms is 7", function() {
@@ -166,6 +166,6 @@ Content-Type: application/json
 
     client.test("Amount of booked premium rooms is 1153.99", function() {
         var body = response.body;
-        client.assert(body.premium.bookingAmount === 1153.99, "Expected that amount for booked premium rooms is 1153.99 but received '" + body.premium.bookingAmount + "'");
+        client.assert(body.premium.bookingAmount === "1153.99", "Expected that amount for booked premium rooms is 1153.99 but received '" + body.premium.bookingAmount + "'");
     });
 %}

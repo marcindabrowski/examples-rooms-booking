@@ -12,6 +12,7 @@ class JsonConfiguration {
   SimpleModule jacksonModuleWithCustomDeserializers() {
     SimpleModule module = new SimpleModule("ServiceDeserializerModule");
     module.addDeserializer(Amount.class, new AmountDeserializer());
+    module.addSerializer(Amount.class, new AmountSerializer());
     return module;
   }
 }
