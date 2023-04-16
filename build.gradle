@@ -144,14 +144,15 @@ application {
 }
 
 checkstyle {
+    configDirectory.set(rootProject.file("gradle/config/checkstyle"))
+    configFile = rootProject.file("gradle/config/checkstyle/google_checks.xml")
     toolVersion = libs.versions.checkstyle.get()
-    configFile = file("config/checkstyle/google_checks.xml")
 }
 
 codenarc {
-    toolVersion = libs.versions.codenarc.get()
+    configFile = rootProject.file("gradle/config/codenarc/CodenarcRuleSet.groovy")
     reportFormat = "console"
-    configFile = rootProject.file("config/codenarc/CodenarcRuleSet.groovy")
+    toolVersion = libs.versions.codenarc.get()
 }
 
 tasks.named("dependencyUpdates").configure {
