@@ -4,12 +4,11 @@ import com.github.marcindabrowski.example.roomsbooking.BaseRoomsBookingApplicati
 import com.github.marcindabrowski.example.roomsbooking.domain.model.Amount
 import com.github.marcindabrowski.example.roomsbooking.domain.model.HotelFreeRooms
 import com.github.marcindabrowski.example.roomsbooking.domain.model.HotelRoomsNightOccupancy
+import com.github.marcindabrowski.example.roomsbooking.domain.model.HotelRoomsNightOccupancyAssert
 import com.github.marcindabrowski.example.roomsbooking.domain.model.PotentialGuest
-import spock.lang.Unroll
 
-class BookingServiceTest extends BaseRoomsBookingApplicationSpec {
+class BookingServiceSpec extends BaseRoomsBookingApplicationSpec {
 
-    @Unroll
     def "should book rooms - #testCaseName"() {
         given: "number of free rooms"
             HotelFreeRooms freeRooms = new HotelFreeRooms(freeEconomyRooms, freePremiumRooms)
@@ -21,7 +20,7 @@ class BookingServiceTest extends BaseRoomsBookingApplicationSpec {
             HotelRoomsNightOccupancy hotelRoomsNightOccupancy = bookingService.bookRooms(freeRooms, potentialGuestsList)
 
         then: "the most effective bookings is used"
-            HotelRoomsNightOccupancyAssertion.assertThat(hotelRoomsNightOccupancy) {
+            HotelRoomsNightOccupancyAssert.assertThat(hotelRoomsNightOccupancy) {
                 hasBookedEconomyRooms(bookedRooms: economyRoomsBooked, bookingAmount: economyRoomsAmount)
                 hasBookedPremiumRooms(bookedRooms: premiumRoomsBooked, bookingAmount: premiumRoomsAmount)
             }
@@ -48,7 +47,7 @@ class BookingServiceTest extends BaseRoomsBookingApplicationSpec {
             HotelRoomsNightOccupancy hotelRoomsNightOccupancy = bookingService.bookRooms(freeRooms, potentialGuestsList)
 
         then: "the most effective bookings is used"
-            HotelRoomsNightOccupancyAssertion.assertThat(hotelRoomsNightOccupancy) {
+            HotelRoomsNightOccupancyAssert.assertThat(hotelRoomsNightOccupancy) {
                 hasBookedEconomyRooms(bookedRooms: economyRoomsBooked, bookingAmount: economyRoomsAmount)
                 hasBookedPremiumRooms(bookedRooms: premiumRoomsBooked, bookingAmount: premiumRoomsAmount)
             }

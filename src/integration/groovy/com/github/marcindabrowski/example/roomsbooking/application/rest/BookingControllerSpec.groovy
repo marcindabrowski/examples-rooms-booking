@@ -4,22 +4,23 @@ import com.github.marcindabrowski.example.roomsbooking.BaseIntegrationSpec
 import com.github.marcindabrowski.example.roomsbooking.infrastructure.ability.RestApiAbility
 import org.springframework.http.ResponseEntity
 
-import static com.github.marcindabrowski.example.roomsbooking.application.rest.BookRoomsRequestBuilder.aBookRoomsRequest
+import static BookRoomsRequestSample.aBookRoomsRequest
 import static org.springframework.http.HttpStatus.OK
 
 class BookingControllerSpec extends BaseIntegrationSpec implements RestApiAbility {
 
     def "test bookRooms REST API endpoint - #testCaseName"() {
         given: "booking rooms request"
-            BookRoomsRequestBuilder request = aBookRoomsRequest()
-                    .withFreeEconomyRooms(freeEconomyRooms)
-                    .withFreePremiumRooms(freePremiumRooms)
+            Map<String, Object> request = aBookRoomsRequest([
+                freeEconomyRooms: freeEconomyRooms,
+                freePremiumRooms: freePremiumRooms,
+            ])
 
         when: "book hotel rooms"
-            ResponseEntity<Map> responseEntity = bookRooms(request.toJson())
+            ResponseEntity<Map> responseEntity = bookRooms(request)
 
         then: "the most effective bookings is used"
-            BookRoomsResponseAssertion.assertThat(responseEntity) {
+            BookRoomsResponseAssert.assertThat(responseEntity) {
                 hasStatusCode(OK)
                 hasBookedEconomyRooms(bookedRooms: economyRoomsBooked, bookingAmount: economyRoomsAmount)
                 hasBookedPremiumRooms(bookedRooms: premiumRoomsBooked, bookingAmount: premiumRoomsAmount)

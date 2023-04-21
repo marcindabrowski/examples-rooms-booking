@@ -4,7 +4,7 @@ import groovy.transform.NamedVariant
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 
-class BookRoomsResponseAssertion {
+class BookRoomsResponseAssert {
 
     static class BookRoomsResponseAssertionBuilder {
         private final ResponseEntity<Map> response

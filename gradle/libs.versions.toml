@@ -27,6 +27,8 @@ test-spock-core = { module = "org.spockframework:spock-core", version.ref = "spo
 test-spock-spring = { module = "org.spockframework:spock-spring", version.ref = "spock" }
 
 # dependecies managed by imported boms
+bomDependency-groovy-core = { module = "org.apache.groovy:groovy" }
+bomDependency-spring-web = { module = "org.springframework:spring-web" }
 
 [plugins]
 conventionalCommits = { id = "it.nicolasfarabegoli.conventional-commits", version = "3.1.0" }
