@@ -1,9 +1,8 @@
-package com.github.marcindabrowski.example.roomsbooking.domain.service
+package com.github.marcindabrowski.example.roomsbooking.domain.model
 
-import com.github.marcindabrowski.example.roomsbooking.domain.model.HotelRoomsNightOccupancy
 import groovy.transform.NamedVariant
 
-class HotelRoomsNightOccupancyAssertion {
+class HotelRoomsNightOccupancyAssert {
 
     static class HotelRoomsNightOccupancyAssertionBuilder {
         private final HotelRoomsNightOccupancy hotelRoomsNightOccupancy

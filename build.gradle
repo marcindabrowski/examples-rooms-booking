@@ -5,6 +5,7 @@ plugins {
     id "groovy"
     id "jacoco"
     id "java"
+    id "java-test-fixtures"
     id "maven-publish"
     id "pmd"
 
@@ -83,6 +84,10 @@ dependencies {
     }
 
     developmentOnly libs.spring.boot.devtools
+
+    testFixturesApi libs.bomDependency.spring.web
+    testFixturesImplementation platform(libs.groovy.platform)
+    testFixturesImplementation libs.bomDependency.groovy.core
 
     testImplementation platform(libs.test.junit.platform)
     testImplementation platform(libs.groovy.platform)
