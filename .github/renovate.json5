@@ -1,10 +1,28 @@
 {
-    $schema: "https://docs.renovatebot.com/renovate-schema.json",
-    extends: [
-        "config:base",
-        ":semanticCommits"
-    ],
-    labels: [
-        "dependencies"
-    ],
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: [
+    "config:base",
+    ":semanticCommits"
+  ],
+  labels: [
+    "dependencies"
+  ],
+  packageRules: [
+    {
+      automerge: true,
+      automergeStrategy: "squash",
+      automergeType: "pr",
+      matchUpdateTypes: [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+    }
+  ],
+  platformAutomerge: true,
+  rangeStrategy: "pin",
+  vulnerabilityAlerts: {
+    "enabled": true
+  }
 }
