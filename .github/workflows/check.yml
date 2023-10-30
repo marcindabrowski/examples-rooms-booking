@@ -1,18 +1,13 @@
-name: Service Test
+name: Gradle Checks
 
 on:
-  workflow_dispatch:
+  pull_request:
 
   push:
-    paths:
-      - '.github/workflows/test.yml'
-      - '.gradle/**'
-      - 'config/**'
-      - 'src/**'
-      - 'build.gradle'
-      - 'gradlew'
-      - 'gradlew.bat'
-      - 'settings.gradle'
+    branches:
+      - main
+
+  workflow_dispatch:
 
 jobs:
   test:
