@@ -1,7 +1,7 @@
 [versions]
 checkstyle = "10.9.3"
 codenarc = "3.2.0-groovy-4.0"
-groovy = "4.0.17"
+groovy = "4.0.18"
 google-java-format = "1.16.0"
 jacoco = "0.8.8"
 junit = "5.10.1"
