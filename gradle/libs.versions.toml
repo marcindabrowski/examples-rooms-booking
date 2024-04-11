@@ -20,7 +20,7 @@ spring-boot-platform = { module = "org.springframework.boot:spring-boot-dependen
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 spring-boot-starter-undertow = { module = "org.springframework.boot:spring-boot-starter-undertow" }
 spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
-test-archunit = { module = "com.tngtech.archunit:archunit", version = "1.2.1" }
+test-archunit = { module = "com.tngtech.archunit:archunit", version = "1.3.0" }
 test-equalsVerifier = { module = "nl.jqno.equalsverifier:equalsverifier", version = "3.16.1" }
 test-junit-platform = { module = "org.junit:junit-bom", version.ref = "junit" }
 test-spock-core = { module = "org.spockframework:spock-core", version.ref = "spock" }
