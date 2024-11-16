@@ -38,7 +38,7 @@ errorprone = { id = "net.ltgt.errorprone", version = "3.1.0" }
 gitProperties = { id = "com.gorylenko.gradle-git-properties", version = "2.4.2" }
 lombok = { id = "io.freefair.lombok", version = "8.11" }
 release = { id = "pl.allegro.tech.build.axion-release", version = "1.18.15" }
-sonarqube = { id = "org.sonarqube", version = "4.4.1.3373" }
+sonarqube = { id = "org.sonarqube", version = "5.1.0.4882" }
 spotless = { id = "com.diffplug.spotless", version = "6.25.0" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot-platform" }
 spring-dependencyManagement = { id = "io.spring.dependency-management", version = "1.1.6" }
