@@ -8,7 +8,7 @@ junit = "5.11.4"
 pmd = "6.55.0"
 snakeyaml = "1.33"
 spock = "2.4-M4-groovy-4.0"
-spring-boot-platform = "3.4.0"
+spring-boot-platform = "3.4.1"
 
 [libraries]
 apache-commons-io = { module = "commons-io:commons-io", version = "2.18.0" }
