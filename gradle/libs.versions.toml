@@ -21,7 +21,7 @@ spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-star
 spring-boot-starter-undertow = { module = "org.springframework.boot:spring-boot-starter-undertow" }
 spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
 test-archunit = { module = "com.tngtech.archunit:archunit", version = "1.3.0" }
-test-equalsVerifier = { module = "nl.jqno.equalsverifier:equalsverifier", version = "3.17.5" }
+test-equalsVerifier = { module = "nl.jqno.equalsverifier:equalsverifier", version = "3.18" }
 test-junit-platform = { module = "org.junit:junit-bom", version.ref = "junit" }
 test-spock-core = { module = "org.spockframework:spock-core", version.ref = "spock" }
 test-spock-spring = { module = "org.spockframework:spock-spring", version.ref = "spock" }
