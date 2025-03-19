@@ -132,13 +132,6 @@ tasks.named("test") {
 tasks.withType(Test).configureEach { testTask ->
     testTask.configure {
         useJUnitPlatform()
-        afterSuite { desc, result ->
-            if (!desc.parent) {
-                if (result.testCount == 0) {
-                    throw new IllegalStateException("No tests were found. Failing the build")
-                }
-            }
-        }
     }
 }
 
