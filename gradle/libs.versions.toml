@@ -1,27 +1,24 @@
 [versions]
 checkstyle = "10.9.3"
-codenarc = "3.2.0-groovy-4.0"
-groovy = "4.0.24"
-google-java-format = "1.16.0"
-jacoco = "0.8.8"
-junit = "5.11.4"
-pmd = "6.55.0"
-snakeyaml = "1.33"
+codenarc = "3.6.0-groovy-4.0"
+groovy = "4.0.26"
+google-java-format = "1.25.2"
+jacoco = "0.8.12"
+junit = "5.12.1"
+pmd = "7.11.0"
 spock = "2.4-M5-groovy-4.0"
-spring-boot-platform = "3.4.1"
+spring-boot-platform = "3.4.3"
 
 [libraries]
 apache-commons-io = { module = "commons-io:commons-io", version = "2.18.0" }
-errorprone-core = { module = "com.google.errorprone:error_prone_core", version = "2.35.1" }
+errorprone-core = { module = "com.google.errorprone:error_prone_core", version = "2.36.0" }
 groovy-platform = { module = "org.apache.groovy:groovy-bom", version.ref = "groovy" }
 spring-boot-configurationProcessor = { module = "org.springframework.boot:spring-boot-configuration-processor" }
 spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
-spring-boot-platform = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot-platform" }
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 spring-boot-starter-undertow = { module = "org.springframework.boot:spring-boot-starter-undertow" }
 spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
-test-archunit = { module = "com.tngtech.archunit:archunit", version = "1.3.0" }
-test-equalsVerifier = { module = "nl.jqno.equalsverifier:equalsverifier", version = "3.18.1" }
+test-equalsVerifier = { module = "nl.jqno.equalsverifier:equalsverifier", version = "3.19.1" }
 test-junit-platform = { module = "org.junit:junit-bom", version.ref = "junit" }
 test-spock-core = { module = "org.spockframework:spock-core", version.ref = "spock" }
 test-spock-spring = { module = "org.spockframework:spock-spring", version.ref = "spock" }
@@ -32,14 +29,14 @@ bomDependency-spring-web = { module = "org.springframework:spring-web" }
 
 [plugins]
 conventionalCommits = { id = "it.nicolasfarabegoli.conventional-commits", version = "3.1.3" }
-dependencyCheck = { id = "org.owasp.dependencycheck", version = "8.4.3" }
+dependencyCheck = { id = "org.owasp.dependencycheck", version = "12.1.0" }
 dependencyUpdates = { id = "com.github.ben-manes.versions", version = "0.52.0" }
-errorprone = { id = "net.ltgt.errorprone", version = "3.1.0" }
-gitProperties = { id = "com.gorylenko.gradle-git-properties", version = "2.4.2" }
-lombok = { id = "io.freefair.lombok", version = "8.12" }
-release = { id = "pl.allegro.tech.build.axion-release", version = "1.18.16" }
-sonarqube = { id = "org.sonarqube", version = "4.4.1.3373" }
-spotless = { id = "com.diffplug.spotless", version = "6.25.0" }
+errorprone = { id = "net.ltgt.errorprone", version = "4.1.0" }
+gitProperties = { id = "com.gorylenko.gradle-git-properties", version = "2.5.0" }
+lombok = { id = "io.freefair.lombok", version = "8.13" }
+release = { id = "pl.allegro.tech.build.axion-release", version = "1.18.18" }
+sonarqube = { id = "org.sonarqube", version = "6.0.1.5171" }
+spotless = { id = "com.diffplug.spotless", version = "7.0.2" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot-platform" }
 spring-dependencyManagement = { id = "io.spring.dependency-management", version = "1.1.7" }
 testLogger = { id = "com.adarshr.test-logger", version = "4.0.0" }
