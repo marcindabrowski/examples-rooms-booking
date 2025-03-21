@@ -7,7 +7,7 @@ jacoco = "0.8.12"
 junit = "5.12.1"
 pmd = "7.11.0"
 spock = "2.4-M5-groovy-4.0"
-spring-boot-platform = "3.4.3"
+spring-boot-platform = "3.4.4"
 
 [libraries]
 apache-commons-io = { module = "commons-io:commons-io", version = "2.18.0" }
