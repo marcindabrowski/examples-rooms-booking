@@ -4,7 +4,7 @@ import com.github.marcindabrowski.example.roomsbooking.BaseIntegrationSpec
 import com.github.marcindabrowski.example.roomsbooking.infrastructure.ability.RestApiAbility
 import org.springframework.http.ResponseEntity
 
-import static BookRoomsRequestSample.aBookRoomsRequest
+import static com.github.marcindabrowski.example.roomsbooking.application.rest.BookRoomsRequestSample.aBookRoomsRequest
 import static org.springframework.http.HttpStatus.OK
 
 class BookingControllerSpec extends BaseIntegrationSpec implements RestApiAbility {
