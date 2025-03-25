@@ -32,7 +32,7 @@ dependencyCheck = { id = "org.owasp.dependencycheck", version = "12.1.0" }
 dependencyUpdates = { id = "com.github.ben-manes.versions", version = "0.52.0" }
 errorprone = { id = "net.ltgt.errorprone", version = "4.1.0" }
 gitProperties = { id = "com.gorylenko.gradle-git-properties", version = "2.5.0" }
-lombok = { id = "io.freefair.lombok", version = "8.13" }
+lombok = { id = "io.freefair.lombok", version = "8.13.1" }
 release = { id = "pl.allegro.tech.build.axion-release", version = "1.18.18" }
 sonarqube = { id = "org.sonarqube", version = "6.0.1.5171" }
 spotless = { id = "com.diffplug.spotless", version = "7.0.2" }
