@@ -30,7 +30,7 @@ bomDependency-spring-web = { module = "org.springframework:spring-web" }
 conventionalCommits = { id = "it.nicolasfarabegoli.conventional-commits", version = "3.1.3" }
 dependencyCheck = { id = "org.owasp.dependencycheck", version = "12.1.0" }
 dependencyUpdates = { id = "com.github.ben-manes.versions", version = "0.53.0" }
-errorprone = { id = "net.ltgt.errorprone", version = "4.2.0" }
+errorprone = { id = "net.ltgt.errorprone", version = "4.3.0" }
 gitProperties = { id = "com.gorylenko.gradle-git-properties", version = "2.5.4" }
 lombok = { id = "io.freefair.lombok", version = "8.13.1" }
 release = { id = "pl.allegro.tech.build.axion-release", version = "1.18.18" }
