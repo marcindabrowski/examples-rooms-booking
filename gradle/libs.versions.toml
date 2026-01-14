@@ -33,7 +33,7 @@ dependencyUpdates = { id = "com.github.ben-manes.versions", version = "0.53.0" }
 errorprone = { id = "net.ltgt.errorprone", version = "4.4.0" }
 gitProperties = { id = "com.gorylenko.gradle-git-properties", version = "2.5.4" }
 lombok = { id = "io.freefair.lombok", version = "8.14.4" }
-release = { id = "pl.allegro.tech.build.axion-release", version = "1.18.18" }
+release = { id = "pl.allegro.tech.build.axion-release", version = "1.21.1" }
 sonarqube = { id = "org.sonarqube", version = "6.0.1.5171" }
 spotless = { id = "com.diffplug.spotless", version = "7.0.2" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot-platform" }
