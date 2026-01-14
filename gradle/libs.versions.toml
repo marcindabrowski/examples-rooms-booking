@@ -10,7 +10,7 @@ spock = "2.4-M6-groovy-4.0"
 spring-boot-platform = "3.5.9"
 
 [libraries]
-errorprone-core = { module = "com.google.errorprone:error_prone_core", version = "2.36.0" }
+errorprone-core = { module = "com.google.errorprone:error_prone_core", version = "2.46.0" }
 groovy-platform = { module = "org.apache.groovy:groovy-bom", version.ref = "groovy" }
 spring-boot-configurationProcessor = { module = "org.springframework.boot:spring-boot-configuration-processor" }
 spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
