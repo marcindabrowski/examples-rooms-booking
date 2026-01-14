@@ -27,7 +27,7 @@ jobs:
           check-latest: true
 
       - name: Setup and execute Gradle 'check' task
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: check
 
@@ -35,7 +35,7 @@ jobs:
           echo "New release version: ${{ github.event.inputs.newReleaseVersion }}"
 
       - name: Release version
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: |
             release
@@ -44,7 +44,7 @@ jobs:
             -Prelease.customPassword=${{ github.token }}
 
       - name: Publish package
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: publish
         env:
