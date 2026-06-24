@@ -7,7 +7,7 @@ jacoco = "0.8.12"
 junit = "5.14.2"
 pmd = "7.11.0"
 spock = "2.4-M6-groovy-4.0"
-spring-boot-platform = "3.5.11"
+spring-boot-platform = "3.5.15"
 
 [libraries]
 errorprone-core = { module = "com.google.errorprone:error_prone_core", version = "2.36.0" }
