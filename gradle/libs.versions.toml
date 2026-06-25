@@ -5,7 +5,7 @@ groovy = "4.0.32"
 googleJavaFormat = "1.25.2"
 jacoco = "0.8.15"
 junit = "5.14.4"
-pmd = "7.11.0"
+pmd = "7.25.0"
 spock = "2.4-M6-groovy-4.0"
 spring-boot-platform = "3.5.16"
 
