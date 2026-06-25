@@ -43,7 +43,7 @@ jobs:
           restore-keys: ${{ runner.os }}-sonar
 
       - name: Build and run SonarCloud Scan
-        uses: gradle/gradle-build-action@v2.12.0
+        uses: gradle/gradle-build-action@v3.5.0
         with:
           arguments: build sonarqube --info
         env:
