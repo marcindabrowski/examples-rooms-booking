@@ -1,5 +1,5 @@
 [versions]
-checkstyle = "10.9.3"
+checkstyle = "10.26.1"
 codenarc = "3.6.0-groovy-4.0"
 groovy = "4.0.32"
 googleJavaFormat = "1.25.2"
