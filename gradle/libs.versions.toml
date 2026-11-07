@@ -17,7 +17,7 @@ spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 spring-boot-starter-undertow = { module = "org.springframework.boot:spring-boot-starter-undertow" }
 spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
-test-equalsVerifier = { module = "nl.jqno.equalsverifier:equalsverifier", version = "3.19.2" }
+test-equalsVerifier = { module = "nl.jqno.equalsverifier:equalsverifier", version = "3.19.4" }
 test-junit-platform = { module = "org.junit:junit-bom", version.ref = "junit" }
 test-spock-core = { module = "org.spockframework:spock-core", version.ref = "spock" }
 test-spock-spring = { module = "org.spockframework:spock-spring", version.ref = "spock" }
